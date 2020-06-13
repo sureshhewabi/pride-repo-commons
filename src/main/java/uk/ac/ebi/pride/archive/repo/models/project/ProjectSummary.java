@@ -92,6 +92,9 @@ public class ProjectSummary implements ProjectProvider {
   }
 
   public Optional<String> getDoi() {
+    if(doi == null) {
+      return Optional.empty();
+    }
     return Optional.of(doi);
   }
 
