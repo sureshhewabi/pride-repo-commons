@@ -1,2 +1,2 @@
-# pride-repo-models
-common models that will be used by pride-repo server &amp; client
+# pride-repo-commons
+common code for pride-repo-ws & pride-repo
