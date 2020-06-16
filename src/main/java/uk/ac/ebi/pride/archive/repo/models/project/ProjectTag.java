@@ -1,6 +1,8 @@
 package uk.ac.ebi.pride.archive.repo.models.project;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import uk.ac.ebi.pride.archive.dataprovider.project.ProjectTagProvider;
 
 import javax.persistence.*;
@@ -17,6 +19,7 @@ import javax.validation.constraints.NotNull;
   sequenceName = "projectTagSequence",
   allocationSize = 100
 )
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope = ProjectTag.class)
 public class ProjectTag implements ProjectTagProvider {
 
   @Id

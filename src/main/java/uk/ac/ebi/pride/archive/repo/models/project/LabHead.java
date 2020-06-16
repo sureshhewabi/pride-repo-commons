@@ -1,6 +1,8 @@
 package uk.ac.ebi.pride.archive.repo.models.project;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import uk.ac.ebi.pride.archive.dataprovider.user.ContactProvider;
 import uk.ac.ebi.pride.archive.dataprovider.utils.TitleConstants;
 
@@ -14,6 +16,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "lab_head")
 @SequenceGenerator(name = "LabHeadSequence", sequenceName = "labHeadSequence", allocationSize = 100)
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope=LabHead.class)
 public class LabHead implements ContactProvider {
 
   @Id

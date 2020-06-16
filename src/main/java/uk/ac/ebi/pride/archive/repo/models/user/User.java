@@ -1,13 +1,16 @@
 package uk.ac.ebi.pride.archive.repo.models.user;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import uk.ac.ebi.pride.archive.dataprovider.user.UserProvider;
 import uk.ac.ebi.pride.archive.dataprovider.utils.RoleConstants;
 import uk.ac.ebi.pride.archive.dataprovider.utils.TitleConstants;
 import uk.ac.ebi.pride.archive.repo.models.project.Project;
+import uk.ac.ebi.pride.archive.repo.models.project.Reference;
 import uk.ac.ebi.pride.archive.repo.util.PasswordUtilities;
 
 import javax.persistence.*;
@@ -24,6 +27,7 @@ import java.util.Set;
 @Entity
 @Table(name = "pride_users")
 @SequenceGenerator(name = "UserSequence", sequenceName = "prideUserSequence", allocationSize = 100)
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope = User.class)
 public class User implements UserProvider {
 
   @Id
@@ -85,7 +89,7 @@ public class User implements UserProvider {
   @LazyCollection(LazyCollectionOption.FALSE)
   private Collection<Authority> authorities;
 
-  @JsonBackReference
+  //@JsonBackReference
   @ManyToMany(cascade = CascadeType.MERGE, mappedBy = "users")
   private Collection<Project> projects;
 

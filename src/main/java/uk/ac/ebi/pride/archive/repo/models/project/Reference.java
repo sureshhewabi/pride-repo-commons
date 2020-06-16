@@ -1,6 +1,8 @@
 package uk.ac.ebi.pride.archive.repo.models.project;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import uk.ac.ebi.pride.archive.dataprovider.reference.ReferenceProvider;
 
 import javax.persistence.*;
@@ -17,6 +19,7 @@ import javax.validation.constraints.NotNull;
   sequenceName = "referenceSequence",
   allocationSize = 100
 )
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope = Reference.class)
 public class Reference implements ReferenceProvider {
 
   @Id

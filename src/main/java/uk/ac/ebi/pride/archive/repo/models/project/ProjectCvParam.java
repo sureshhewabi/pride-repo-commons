@@ -1,6 +1,8 @@
 package uk.ac.ebi.pride.archive.repo.models.project;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import uk.ac.ebi.pride.archive.dataprovider.param.CvParamProvider;
 import uk.ac.ebi.pride.archive.repo.models.param.CvParam;
 
@@ -22,6 +24,7 @@ import javax.validation.constraints.NotNull;
   sequenceName = "projectParamSequence",
   allocationSize = 100
 )
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope=ProjectCvParam.class)
 public abstract class ProjectCvParam implements CvParamProvider {
 
   @Id
