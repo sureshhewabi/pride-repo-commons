@@ -1,5 +1,8 @@
 package uk.ac.ebi.pride.archive.repo.models.assay.instrument;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import uk.ac.ebi.pride.archive.dataprovider.param.CvParamProvider;
 import uk.ac.ebi.pride.archive.repo.models.param.CvParam;
 
@@ -17,6 +20,7 @@ import javax.validation.constraints.NotNull;
   sequenceName = "instrCompParamSequence",
   allocationSize = 100
 )
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope= InstrumentComponentCvParam.class)
 public class InstrumentComponentCvParam implements CvParamProvider {
 
   @Id
@@ -48,14 +52,17 @@ public class InstrumentComponentCvParam implements CvParamProvider {
     this.id = id;
   }
 
+  @JsonIgnore
   public String getCvLabel() {
     return cvParam.getCvLabel();
   }
 
+  @JsonIgnore
   public String getAccession() {
     return cvParam.getAccession();
   }
 
+  @JsonIgnore
   public String getName() {
     return cvParam.getName();
   }
