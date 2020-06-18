@@ -1,8 +1,8 @@
 package uk.ac.ebi.pride.archive.repo.models.user;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -10,7 +10,6 @@ import uk.ac.ebi.pride.archive.dataprovider.user.UserProvider;
 import uk.ac.ebi.pride.archive.dataprovider.utils.RoleConstants;
 import uk.ac.ebi.pride.archive.dataprovider.utils.TitleConstants;
 import uk.ac.ebi.pride.archive.repo.models.project.Project;
-import uk.ac.ebi.pride.archive.repo.models.project.Reference;
 import uk.ac.ebi.pride.archive.repo.util.PasswordUtilities;
 
 import javax.persistence.*;
@@ -35,7 +34,6 @@ public class User implements UserProvider {
   @Column(name = "user_pk")
   private Long id;
 
-  @JsonIgnore
   @NotNull
   private String password;
 
@@ -89,7 +87,7 @@ public class User implements UserProvider {
   @LazyCollection(LazyCollectionOption.FALSE)
   private Collection<Authority> authorities;
 
-  //@JsonBackReference
+//  @JsonBackReference
   @ManyToMany(cascade = CascadeType.MERGE, mappedBy = "users")
   private Collection<Project> projects;
 
@@ -103,6 +101,11 @@ public class User implements UserProvider {
 
   public String getPassword() {
     return password;
+  }
+
+  @JsonProperty("password")
+  public void setPasswordOriginal(String password) {
+    this.password = password;
   }
 
   public void setPassword(String password) {
@@ -206,7 +209,16 @@ public class User implements UserProvider {
     this.acceptedTermsOfUseAt = acceptedTermsOfUseAt;
   }
 
+  public Collection<Project> getProjects() {
+    return projects;
+  }
+
+  public void setProjects(Collection<Project> projects) {
+    this.projects = projects;
+  }
+
   @Override
+  @JsonIgnore
   public Set<RoleConstants> getUserAuthorities() {
     Set<RoleConstants> userAuthorities = new HashSet<>();
     if (authorities != null) {
@@ -217,6 +229,7 @@ public class User implements UserProvider {
     return userAuthorities;
   }
 
+  @JsonIgnore
   public void setUserAuthorities(Set<RoleConstants> userAuthorities) {
     this.authorities = new HashSet<>();
     for (RoleConstants userAuthority : userAuthorities) {

@@ -51,7 +51,6 @@ public class Project implements ProjectProvider {
     @NotNull
     private String accession;
 
-    @JsonIgnore
     private String doi;
 
     @NotNull
@@ -205,21 +204,6 @@ public class Project implements ProjectProvider {
         return title;
     }
 
-    @Override
-    public String getDescription() {
-        return null;
-    }
-
-    @Override
-    public Collection<? extends String> getSubmitters() {
-        return null;
-    }
-
-    @Override
-    public Collection<? extends String> getHeadLab() {
-        return null;
-    }
-
     public void setTitle(String title) {
         this.title = title;
     }
@@ -319,11 +303,6 @@ public class Project implements ProjectProvider {
 
     public void setPtms(Collection<ProjectPTM> projectPTMs) {
         this.ptms = projectPTMs;
-    }
-
-    @Override
-    public Collection<? extends String> getSoftwares() {
-        return null;
     }
 
     public Collection<Reference> getReferences() {
@@ -428,26 +407,6 @@ public class Project implements ProjectProvider {
         this.publicProject = publicProject;
     }
 
-    @Override
-    public Collection<? extends String> getExperimentalFactors() {
-        return null;
-    }
-
-    @Override
-    public Collection<? extends String> getCountries() {
-        return null;
-    }
-
-    @Override
-    public Collection<? extends String> getAllAffiliations() {
-        return null;
-    }
-
-    @Override
-    public Collection<? extends String> getSampleAttributes() {
-        return null;
-    }
-
     public Collection<ProjectGroupUserParam> getProjectGroupUserParams() {
         return projectGroupUserParams;
     }
@@ -464,8 +423,18 @@ public class Project implements ProjectProvider {
         this.projectGroupCvParams = projectGroupCvParams;
     }
 
+    public void setSoftwares(Collection<ProjectSoftwareCvParam> softwares) {
+        this.softwares = softwares;
+    }
+
+   @JsonProperty("softwares")
     public Collection<ProjectSoftwareCvParam> getSoftware() {
         return softwares;
+    }
+
+    @Override
+    public Collection<? extends String> getSoftwares() {
+        return null;
     }
 
     public void setSoftware(Collection<ProjectSoftwareCvParam> softwares) {
@@ -495,18 +464,61 @@ public class Project implements ProjectProvider {
         return accession.hashCode();
     }
 
-    //@Override
+    @JsonIgnore
     public Map<String, Collection<ProteinIdentificationProvider>> getProteinIdentifications() {
         return null;
     }
 
-    //@Override
+    @JsonIgnore
     public Collection<? extends PeptideSequenceProvider> getPeptideSequences() {
         return null;
     }
 
     @Override
+    @JsonIgnore
     public Collection<? extends String> getAdditionalAttributesStrings() {
+        return null;
+    }
+
+    @Override
+    @JsonIgnore
+    public String getDescription() {
+        return null;
+    }
+
+    @Override
+    @JsonIgnore
+    public Collection<? extends String> getSubmitters() {
+        return null;
+    }
+
+    @Override
+    @JsonIgnore
+    public Collection<? extends String> getHeadLab() {
+        return null;
+    }
+
+    @Override
+    @JsonIgnore
+    public Collection<? extends String> getExperimentalFactors() {
+        return null;
+    }
+
+    @Override
+    @JsonIgnore
+    public Collection<? extends String> getCountries() {
+        return null;
+    }
+
+    @Override
+    @JsonIgnore
+    public Collection<? extends String> getAllAffiliations() {
+        return null;
+    }
+
+    @Override
+    @JsonIgnore
+    public Collection<? extends String> getSampleAttributes() {
         return null;
     }
 }

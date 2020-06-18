@@ -1,5 +1,7 @@
 package uk.ac.ebi.pride.archive.repo.models.user;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import uk.ac.ebi.pride.archive.dataprovider.utils.RoleConstants;
 
 import javax.persistence.*;
@@ -16,6 +18,7 @@ import javax.validation.constraints.NotNull;
   sequenceName = "authoritySequence",
   allocationSize = 100
 )
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope= Authority.class)
 public class Authority {
 
   @Id

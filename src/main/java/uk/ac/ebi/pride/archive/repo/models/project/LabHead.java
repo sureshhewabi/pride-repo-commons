@@ -1,7 +1,7 @@
 package uk.ac.ebi.pride.archive.repo.models.project;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import uk.ac.ebi.pride.archive.dataprovider.user.ContactProvider;
 import uk.ac.ebi.pride.archive.dataprovider.utils.TitleConstants;
@@ -24,7 +24,7 @@ public class LabHead implements ContactProvider {
   @Column(name = "lab_head_pk")
   private Long id;
 
-  @JsonBackReference
+//  @JsonBackReference
   @ManyToOne
   @JoinColumn(name = "project_fk", nullable = false)
   private Project project;
@@ -65,11 +65,6 @@ public class LabHead implements ContactProvider {
     return title;
   }
 
-  @Override
-  public String getName() {
-    return null;
-  }
-
   public void setTitle(TitleConstants title) {
     this.title = title;
   }
@@ -102,17 +97,26 @@ public class LabHead implements ContactProvider {
     return email;
   }
 
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
   @Override
+  @JsonIgnore
+  public String getName() {
+    return null;
+  }
+
+  @Override
+  @JsonIgnore
   public String getCountry() {
     return null;
   }
 
   @Override
+  @JsonIgnore
   public String getOrcid() {
     return null;
   }
 
-  public void setEmail(String email) {
-    this.email = email;
-  }
 }
