@@ -1,5 +1,6 @@
 package uk.ac.ebi.pride.archive.repo.models.assay.instrument;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import uk.ac.ebi.pride.archive.dataprovider.param.ParamProvider;
@@ -32,6 +33,7 @@ public class InstrumentComponentUserParam implements ParamProvider {
   @NotNull
   @ManyToOne
   @JoinColumn(name = "instrument_component_fk")
+  @JsonBackReference(value = "InstrumentComponentUserParam-instrumentComponent")
   private InstrumentComponent instrumentComponent;
 
   @Column(name = "param_name")
