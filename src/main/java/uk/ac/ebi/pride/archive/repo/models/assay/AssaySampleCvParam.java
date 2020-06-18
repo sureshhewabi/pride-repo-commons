@@ -1,5 +1,8 @@
 package uk.ac.ebi.pride.archive.repo.models.assay;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
@@ -9,4 +12,5 @@ import javax.persistence.Entity;
  */
 @Entity
 @DiscriminatorValue("SAMPLE")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope= AssaySampleCvParam.class)
 public class AssaySampleCvParam extends AssayCvParam {}

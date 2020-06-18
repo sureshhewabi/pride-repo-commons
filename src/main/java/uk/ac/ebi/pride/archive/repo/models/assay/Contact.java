@@ -1,5 +1,8 @@
 package uk.ac.ebi.pride.archive.repo.models.assay;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import uk.ac.ebi.pride.archive.dataprovider.user.ContactProvider;
 import uk.ac.ebi.pride.archive.dataprovider.utils.TitleConstants;
 
@@ -13,6 +16,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "contact")
 @SequenceGenerator(name = "ContactSequence", sequenceName = "contactSequence", allocationSize = 100)
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope= Contact.class)
 public class Contact implements ContactProvider {
 
   @Id
@@ -54,11 +58,6 @@ public class Contact implements ContactProvider {
     return this.title;
   }
 
-  @Override
-  public String getName() {
-    return null;
-  }
-
   public void setTitle(TitleConstants title) {
     this.title = title;
   }
@@ -91,16 +90,6 @@ public class Contact implements ContactProvider {
     return this.email;
   }
 
-  @Override
-  public String getCountry() {
-    return null;
-  }
-
-  @Override
-  public String getOrcid() {
-    return null;
-  }
-
   public void setEmail(String email) {
     this.email = email;
   }
@@ -111,6 +100,24 @@ public class Contact implements ContactProvider {
 
   public void setAssay(Assay assay) {
     this.assay = assay;
+  }
+
+  @Override
+  @JsonIgnore
+  public String getName() {
+    return null;
+  }
+
+  @Override
+  @JsonIgnore
+  public String getCountry() {
+    return null;
+  }
+
+  @Override
+  @JsonIgnore
+  public String getOrcid() {
+    return null;
   }
 
   @Override

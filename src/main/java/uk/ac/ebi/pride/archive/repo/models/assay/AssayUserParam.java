@@ -1,5 +1,7 @@
 package uk.ac.ebi.pride.archive.repo.models.assay;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import uk.ac.ebi.pride.archive.dataprovider.param.ParamProvider;
 
 import javax.persistence.*;
@@ -19,6 +21,7 @@ import javax.validation.constraints.NotNull;
   sequenceName = "assayParamSequence",
   allocationSize = 100
 )
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope= AssayUserParam.class)
 public abstract class AssayUserParam implements ParamProvider {
 
   @Id
