@@ -1,8 +1,11 @@
 package uk.ac.ebi.pride.archive.repo.models.file;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import uk.ac.ebi.pride.archive.dataprovider.file.ProjectFileProvider;
 import uk.ac.ebi.pride.archive.dataprovider.file.ProjectFileSource;
 import uk.ac.ebi.pride.archive.dataprovider.file.ProjectFileType;
+import uk.ac.ebi.pride.archive.repo.models.assay.instrument.InstrumentComponentUserParam;
 
 import javax.persistence.*;
 
@@ -21,6 +24,7 @@ import javax.persistence.*;
   sequenceName = "projectFileSequence",
   allocationSize = 100
 )
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope= ProjectFile.class)
 public class ProjectFile implements ProjectFileProvider {
 
   /** Result file type, such as: PRIDE XML, mzIdentML */

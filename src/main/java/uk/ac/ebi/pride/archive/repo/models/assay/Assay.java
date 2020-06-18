@@ -361,15 +361,18 @@ public class Assay implements AssayProvider {
     }
 
 
+    @JsonIgnore
     public Collection<? extends ITuple<? extends CvParamProvider, ? extends CvParamProvider>> getSampleProperties() {
         return null;
     }
 
+    @JsonIgnore
     @Override
     public AssayType getAssayType() {
         return null;
     }
 
+    @JsonIgnore
     @Override
     public Collection<? extends CvParamProvider> getAdditionalProperties() {
         return null;
