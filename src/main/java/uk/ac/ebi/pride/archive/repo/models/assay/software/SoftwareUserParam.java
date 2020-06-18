@@ -1,5 +1,7 @@
 package uk.ac.ebi.pride.archive.repo.models.assay.software;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import uk.ac.ebi.pride.archive.dataprovider.param.ParamProvider;
 
 import javax.persistence.*;
@@ -16,6 +18,7 @@ import javax.validation.constraints.NotNull;
   sequenceName = "softwareParamSequence",
   allocationSize = 100
 )
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope = SoftwareUserParam.class)
 public class SoftwareUserParam implements ParamProvider {
 
   @Id

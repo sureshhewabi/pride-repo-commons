@@ -1,5 +1,9 @@
 package uk.ac.ebi.pride.archive.repo.models.assay.software;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import uk.ac.ebi.pride.archive.dataprovider.data.software.SoftwareProvider;
@@ -24,6 +28,7 @@ import java.util.List;
   sequenceName = "softwareParamSequence",
   allocationSize = 100
 )
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope = Software.class)
 public class Software implements SoftwareProvider {
 
   @Id
@@ -77,22 +82,20 @@ public class Software implements SoftwareProvider {
     this.name = name;
   }
 
+  @Override
   public List<String> getCustomization() {
     ArrayList<String> customizedList = new ArrayList<String>();
     customizedList.add(customization);
     return customizedList;
   }
 
-  /*public void setCustomization(List<String> customization) {
-    this.customization = customization;
-  }*/
+  @JsonProperty("customization")
+  public String getCustomizationOriginal() {
+    return customization;
+  }
 
-  public void setCustomization(String customizationString) {
-    /*if(customization==null){
-      customization = new ArrayList<String>();
-    }
-    customization.add(customizationString);*/
-    this.customization=customizationString;
+  public void setCustomization(String customization) {
+    this.customization = customization;
   }
 
   public String getVersion() {
@@ -111,6 +114,7 @@ public class Software implements SoftwareProvider {
     this.assay = assay;
   }
 
+  @JsonIgnore
   public Collection<ParamProvider> getParams() {
     Collection<ParamProvider> params = new LinkedList<>();
 
@@ -169,6 +173,7 @@ public class Software implements SoftwareProvider {
   }
 
   @Override
+  @JsonIgnore
   public Collection<? extends String> getAdditionalAttributesStrings() {
     return null;
   }

@@ -1,5 +1,8 @@
 package uk.ac.ebi.pride.archive.repo.models.assay.software;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import uk.ac.ebi.pride.archive.dataprovider.param.CvParamProvider;
 import uk.ac.ebi.pride.archive.repo.models.param.CvParam;
 
@@ -17,6 +20,7 @@ import javax.validation.constraints.NotNull;
   sequenceName = "softwareParamSequence",
   allocationSize = 100
 )
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope = SoftwareCvParam.class)
 public class SoftwareCvParam implements CvParamProvider {
 
   @Id
@@ -61,10 +65,6 @@ public class SoftwareCvParam implements CvParamProvider {
     this.cvParam = cvParam;
   }
 
-  public String getName() {
-    return this.cvParam.getName();
-  }
-
   public String getValue() {
     return value;
   }
@@ -73,10 +73,17 @@ public class SoftwareCvParam implements CvParamProvider {
     this.value = value;
   }
 
+  @JsonIgnore
+  public String getName() {
+    return this.cvParam.getName();
+  }
+
+  @JsonIgnore
   public String getCvLabel() {
     return this.cvParam.getCvLabel();
   }
 
+  @JsonIgnore
   public String getAccession() {
     return this.cvParam.getAccession();
   }
