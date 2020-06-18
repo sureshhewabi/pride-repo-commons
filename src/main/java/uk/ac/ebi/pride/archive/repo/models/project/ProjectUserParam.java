@@ -1,6 +1,7 @@
 package uk.ac.ebi.pride.archive.repo.models.project;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import uk.ac.ebi.pride.archive.dataprovider.param.ParamProvider;
 
@@ -21,6 +22,7 @@ import javax.validation.constraints.NotNull;
   sequenceName = "projectParamSequence",
   allocationSize = 100
 )
+@JsonTypeInfo(use=JsonTypeInfo.Id.CLASS, include=JsonTypeInfo.As.PROPERTY, property="@class")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope = ProjectUserParam.class)
 public abstract class ProjectUserParam implements ParamProvider {
 

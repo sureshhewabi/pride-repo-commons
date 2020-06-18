@@ -437,10 +437,6 @@ public class Project implements ProjectProvider {
         return null;
     }
 
-    public void setSoftware(Collection<ProjectSoftwareCvParam> softwares) {
-        this.softwares = softwares;
-    }
-
     public boolean isChanged() {
         return changed;
     }

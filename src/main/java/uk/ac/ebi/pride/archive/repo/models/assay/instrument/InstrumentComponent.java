@@ -1,11 +1,10 @@
 package uk.ac.ebi.pride.archive.repo.models.assay.instrument;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import uk.ac.ebi.pride.archive.dataprovider.assay.instrument.InstrumentComponentProvider;
+import uk.ac.ebi.pride.archive.dataprovider.param.CvParam;
 import uk.ac.ebi.pride.archive.dataprovider.param.ParamProvider;
 
 import javax.persistence.*;
@@ -31,6 +30,7 @@ import java.util.LinkedList;
         sequenceName = "instrCompSequence",
         allocationSize = 100
 )
+@JsonTypeInfo(use=JsonTypeInfo.Id.CLASS, include=JsonTypeInfo.As.PROPERTY, property="@class")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = InstrumentComponent.class)
 public abstract class InstrumentComponent implements InstrumentComponentProvider {
 
@@ -48,10 +48,12 @@ public abstract class InstrumentComponent implements InstrumentComponentProvider
     @Column(name = "order_index")
     private int order;
 
+//    @JsonManagedReference(value = "instrumentComponentUserParams")
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "instrumentComponent")
     @LazyCollection(LazyCollectionOption.FALSE)
     private Collection<InstrumentComponentUserParam> instrumentComponentUserParams;
 
+//    @JsonManagedReference(value = "instrumentComponentCvParams")
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "instrumentComponent")
     @LazyCollection(LazyCollectionOption.FALSE)
     private Collection<InstrumentComponentCvParam> instrumentComponentCvParams;
