@@ -1,9 +1,6 @@
 package uk.ac.ebi.pride.archive.repo.models.user;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import uk.ac.ebi.pride.archive.dataprovider.user.UserProvider;
@@ -87,7 +84,7 @@ public class User implements UserProvider {
   @LazyCollection(LazyCollectionOption.FALSE)
   private Collection<Authority> authorities;
 
-//  @JsonBackReference
+  @JsonBackReference
   @ManyToMany(cascade = CascadeType.MERGE, mappedBy = "users")
   private Collection<Project> projects;
 
