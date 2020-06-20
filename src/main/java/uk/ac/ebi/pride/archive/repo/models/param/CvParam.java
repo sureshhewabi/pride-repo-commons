@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
  * @version $Id$
  */
 @Entity
-@Table(name = "cv_param")
+@Table(name = "cv_param", uniqueConstraints={@UniqueConstraint(columnNames = {"cv_label", "accession"})})
 @SequenceGenerator(name = "ParamSequence", sequenceName = "paramSequence", allocationSize = 100)
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope= CvParam.class)
 public class CvParam implements CvParamProvider {
@@ -24,11 +24,11 @@ public class CvParam implements CvParamProvider {
   private Long id;
 
   @NotNull
-  @Column(name = "cv_label", unique = true)
+  @Column(name = "cv_label")
   private String cvLabel;
 
   @NotNull
-  @Column(name = "accession", unique = true)
+  @Column(name = "accession")
   private String accession;
 
   @NotNull
