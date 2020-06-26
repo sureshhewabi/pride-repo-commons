@@ -36,6 +36,7 @@ public class InstrumentComponentUserParam implements ParamProvider {
   @JsonBackReference(value = "InstrumentComponentUserParam-instrumentComponent")
   private InstrumentComponent instrumentComponent;
 
+  @NotNull
   @Column(name = "param_name")
   private String name;
 

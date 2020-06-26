@@ -34,6 +34,7 @@ public class Assay implements AssayProvider {
     private Long id;
 
     @Column(name = "project_fk")
+    @NotNull
     private Long projectId;
 
     @NotNull
@@ -54,6 +55,7 @@ public class Assay implements AssayProvider {
     private int uniquePeptideCount;
 
     @Column(name = "identified_spectrum_count")
+    @NotNull
     private int identifiedSpectrumCount;
 
     @NotNull

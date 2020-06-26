@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import uk.ac.ebi.pride.archive.dataprovider.file.ProjectFileProvider;
 import uk.ac.ebi.pride.archive.dataprovider.file.ProjectFileSource;
 import uk.ac.ebi.pride.archive.dataprovider.file.ProjectFileType;
-import uk.ac.ebi.pride.archive.repo.models.assay.instrument.InstrumentComponentUserParam;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 /**
  * {@code ProjectFile} represents a data file from a project
@@ -48,18 +48,29 @@ public class ProjectFile implements ProjectFileProvider {
 
   /** Different project file types */
   @Column(name = "project_fk")
+  @NotNull
   private Long projectId;
+
   @Column(name = "assay_fk")
   private Long assayId;
+
+  @NotNull
   @Column(name = "file_type")
   @Enumerated(EnumType.STRING)
   private ProjectFileType fileType;
+
+  @NotNull
   @Column(name = "file_size")
   private long fileSize;
+
+  @NotNull
   @Column(name = "file_name")
   private String fileName;
+
   @Column(name = "file_path")
   private String filePath;
+
+  @NotNull
   @Column(name = "file_source")
   @Enumerated(EnumType.STRING)
   private ProjectFileSource fileSource;

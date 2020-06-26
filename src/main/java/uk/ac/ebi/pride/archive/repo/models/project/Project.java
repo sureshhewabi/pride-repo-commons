@@ -49,6 +49,7 @@ public class Project implements ProjectProvider {
     private Collection<User> users;
 
     @NotNull
+    @Column(name = "accession", unique = true)
     private String accession;
 
     private String doi;
@@ -68,6 +69,7 @@ public class Project implements ProjectProvider {
     @NotNull
     private String keywords;
 
+    @NotNull
     @Column(name = "num_assays")
     private int numAssays;
 

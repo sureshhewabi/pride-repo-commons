@@ -37,6 +37,7 @@ public abstract class AssayUserParam implements ParamProvider {
   private Assay assay;
 
   @Column(name = "param_name")
+  @NotNull
   private String name;
 
   @Column(name = "value")

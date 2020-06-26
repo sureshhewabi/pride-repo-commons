@@ -6,6 +6,7 @@ import uk.ac.ebi.pride.archive.dataprovider.param.CvParamProvider;
 import uk.ac.ebi.pride.archive.repo.models.param.CvParam;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 /**
  * @author Jose A. Dianes
@@ -28,10 +29,12 @@ public class AssayPTM implements CvParamProvider {
 
   @ManyToOne
   @JoinColumn(name = "assay_fk")
+  @NotNull
   private Assay assay;
 
   @ManyToOne(cascade = {CascadeType.MERGE})
   @JoinColumn(name = "cv_param_fk")
+  @NotNull
   private CvParam cvParam;
 
   private String value;

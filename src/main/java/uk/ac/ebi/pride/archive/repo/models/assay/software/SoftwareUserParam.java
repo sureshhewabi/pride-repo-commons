@@ -26,6 +26,7 @@ public class SoftwareUserParam implements ParamProvider {
   @Column(name = "param_pk")
   private Long id;
 
+  @NotNull
   @Column(name = "param_name")
   private String name;
 

@@ -37,6 +37,7 @@ public abstract class ProjectUserParam implements ParamProvider {
   @JoinColumn(name = "project_fk", nullable = false)
   private Project project;
 
+  @NotNull
   @Column(name = "param_name")
   private String name;
 
