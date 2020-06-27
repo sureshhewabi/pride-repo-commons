@@ -1,9 +1,6 @@
 package uk.ac.ebi.pride.archive.repo.models.assay.instrument;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 import uk.ac.ebi.pride.archive.dataprovider.param.CvParamProvider;
 import uk.ac.ebi.pride.archive.repo.models.param.CvParam;
 
@@ -35,7 +32,7 @@ public class InstrumentComponentCvParam implements CvParamProvider {
   @NotNull
   @ManyToOne
   @JoinColumn(name = "instrument_component_fk", nullable = false)
-  @JsonBackReference(value = "InstrumentComponentCvParam-instrumentComponent")
+//  @JsonBackReference(value = "InstrumentComponentCvParam-instrumentComponent")
   private InstrumentComponent instrumentComponent;
 
   @NotNull
