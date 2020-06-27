@@ -12,20 +12,13 @@ import javax.validation.constraints.NotNull;
  * @version $Id$
  */
 @Entity
-@Table(name = "instrument_component_cvparam")
-@SequenceGenerator(
-  name = "InstrumentComponentParamSequence",
-  sequenceName = "instrCompParamSequence",
-  allocationSize = 100
-)
+@Table(name = "instrument_component_cvparam_2")
+//@SequenceGenerator(name = "InstrumentComponentParamSequence", sequenceName = "instrCompParamSequence", allocationSize = 100)
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope= InstrumentComponentCvParam.class)
 public class InstrumentComponentCvParam implements CvParamProvider {
 
   @Id
-  @GeneratedValue(
-    strategy = GenerationType.SEQUENCE,
-    generator = "InstrumentComponentParamSequence"
-  )
+  //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "InstrumentComponentParamSequence")
   @Column(name = "param_pk")
   private Long id;
 

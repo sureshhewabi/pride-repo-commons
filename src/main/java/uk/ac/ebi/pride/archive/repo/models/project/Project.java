@@ -22,14 +22,14 @@ import java.util.stream.Collectors;
  */
 @Entity
 @FilterDef(name = "paramType")
-@Table(name = "project")
-@SequenceGenerator(name = "ProjectSequence", sequenceName = "projectSequence", allocationSize = 100)
+@Table(name = "project_2")
+//@SequenceGenerator(name = "ProjectSequence", sequenceName = "projectSequence", allocationSize = 100)
 //@JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope=Project.class)
 public class Project implements ProjectProvider {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ProjectSequence")
+    //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ProjectSequence")
     @Column(name = "project_pk")
     private Long id;
 
@@ -42,7 +42,7 @@ public class Project implements ProjectProvider {
     //@JsonManagedReference
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinTable(
-            name = "project_users",
+            name = "project_users_2",
             joinColumns = @JoinColumn(name = "project_fk"),
             inverseJoinColumns = @JoinColumn(name = "user_fk")
     )

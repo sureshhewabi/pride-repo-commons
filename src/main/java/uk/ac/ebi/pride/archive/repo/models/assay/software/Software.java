@@ -22,17 +22,13 @@ import java.util.List;
  * @version $Id$
  */
 @Entity
-@Table(name = "software")
-@SequenceGenerator(
-  name = "SoftwareSequence",
-  sequenceName = "softwareParamSequence",
-  allocationSize = 100
-)
+@Table(name = "software_2")
+//@SequenceGenerator(name = "SoftwareSequence", sequenceName = "softwareParamSequence", allocationSize = 100)
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope = Software.class)
 public class Software implements SoftwareProvider {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SoftwareSequence")
+  //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SoftwareSequence")
   @Column(name = "software_pk")
   private Long id;
 

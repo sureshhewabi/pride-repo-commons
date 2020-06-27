@@ -18,17 +18,13 @@ import java.util.Collection;
  * @version $Id$
  */
 @Entity
-@Table(name = "instrument")
-@SequenceGenerator(
-        name = "InstrumentSequence",
-        sequenceName = "instrumentSequence",
-        allocationSize = 100
-)
+@Table(name = "instrument_2")
+//@SequenceGenerator(name = "InstrumentSequence", sequenceName = "instrumentSequence", allocationSize = 100)
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = Instrument.class)
 public class Instrument implements InstrumentProvider {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "InstrumentSequence")
+    //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "InstrumentSequence")
     @Column(name = "instrument_pk")
     private Long id;
 

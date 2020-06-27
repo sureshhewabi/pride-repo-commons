@@ -23,13 +23,13 @@ import java.util.LinkedList;
  * @version $Id$
  */
 @Entity
-@Table(name = "assay")
-@SequenceGenerator(name = "AssaySequence", sequenceName = "assaySequence", allocationSize = 100)
+@Table(name = "assay_2")
+//@SequenceGenerator(name = "AssaySequence", sequenceName = "assaySequence", allocationSize = 100)
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = Assay.class)
 public class Assay implements AssayProvider {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "AssaySequence")
+    //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "AssaySequence")
     @Column(name = "assay_pk")
     private Long id;
 

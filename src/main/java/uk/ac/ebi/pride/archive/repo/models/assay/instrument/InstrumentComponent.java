@@ -17,7 +17,7 @@ import java.util.LinkedList;
  * @version $Id$
  */
 @Entity
-@Table(name = "instrument_component")
+@Table(name = "instrument_component_2")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(
         name = "instrument_component_type",
@@ -25,17 +25,13 @@ import java.util.LinkedList;
         length = 64
 )
 @org.hibernate.annotations.DiscriminatorOptions(force = true)
-@SequenceGenerator(
-        name = "InstrumentComponentSequence",
-        sequenceName = "instrCompSequence",
-        allocationSize = 100
-)
+//@SequenceGenerator(name = "InstrumentComponentSequence", sequenceName = "instrCompSequence", allocationSize = 100)
 @JsonTypeInfo(use=JsonTypeInfo.Id.CLASS, include=JsonTypeInfo.As.PROPERTY, property="@class")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = InstrumentComponent.class)
 public abstract class InstrumentComponent implements InstrumentComponentProvider {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "InstrumentComponentSequence")
+    //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "InstrumentComponentSequence")
     @Column(name = "instrument_component_pk")
     private Long id;
 

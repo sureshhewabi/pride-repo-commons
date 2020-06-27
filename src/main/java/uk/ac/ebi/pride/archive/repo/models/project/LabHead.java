@@ -14,13 +14,13 @@ import javax.validation.constraints.NotNull;
  * @version $Id$
  */
 @Entity
-@Table(name = "lab_head")
-@SequenceGenerator(name = "LabHeadSequence", sequenceName = "labHeadSequence", allocationSize = 100)
+@Table(name = "lab_head_2")
+//@SequenceGenerator(name = "LabHeadSequence", sequenceName = "labHeadSequence", allocationSize = 100)
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope=LabHead.class)
 public class LabHead implements ContactProvider {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "LabHeadSequence")
+  //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "LabHeadSequence")
   @Column(name = "lab_head_pk")
   private Long id;
 

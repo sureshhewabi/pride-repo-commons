@@ -12,17 +12,13 @@ import javax.validation.constraints.NotNull;
  * @version $Id$
  */
 @Entity
-@Table(name = "project_tag")
-@SequenceGenerator(
-  name = "ProjectTagSequence",
-  sequenceName = "projectTagSequence",
-  allocationSize = 100
-)
+@Table(name = "project_tag_2")
+//@SequenceGenerator(name = "ProjectTagSequence", sequenceName = "projectTagSequence", allocationSize = 100)
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope = ProjectTag.class)
 public class ProjectTag implements ProjectTagProvider {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ProjectTagSequence")
+  //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ProjectTagSequence")
   @Column(name = "project_tag_pk")
   private Long id;
 
