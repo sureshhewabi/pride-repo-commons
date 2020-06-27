@@ -18,12 +18,8 @@ import javax.validation.constraints.NotNull;
  * @version $Id$
  */
 @Entity
-@Table(name = "project_files")
-@SequenceGenerator(
-  name = "ProjectFileSequence",
-  sequenceName = "projectFileSequence",
-  allocationSize = 100
-)
+@Table(name = "project_files_2")
+//@SequenceGenerator(name = "ProjectFileSequence", sequenceName = "projectFileSequence", allocationSize = 100)
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope= ProjectFile.class)
 public class ProjectFile implements ProjectFileProvider {
 
@@ -42,7 +38,7 @@ public class ProjectFile implements ProjectFileProvider {
   /** Other submission file type */
   public static final int OTHER_FILE_TYPE = 7;
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ProjectFileSequence")
+  //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ProjectFileSequence")
   @Column(name = "file_pk")
   private Long id;
 

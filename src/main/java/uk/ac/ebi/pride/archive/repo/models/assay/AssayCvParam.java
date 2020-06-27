@@ -14,21 +14,17 @@ import javax.validation.constraints.NotNull;
  * @version $Id$
  */
 @Entity
-@Table(name = "assay_cvparam")
+@Table(name = "assay_cvparam_2")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "param_type", discriminatorType = DiscriminatorType.STRING, length = 32)
 @org.hibernate.annotations.DiscriminatorOptions(force = true)
-@SequenceGenerator(
-  name = "AssayParamSequence",
-  sequenceName = "assayParamSequence",
-  allocationSize = 100
-)
+//@SequenceGenerator(name = "AssayParamSequence", sequenceName = "assayParamSequence", allocationSize = 100)
 @JsonTypeInfo(use=JsonTypeInfo.Id.CLASS, include=JsonTypeInfo.As.PROPERTY, property="@class")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope= AssayCvParam.class)
 public abstract class AssayCvParam implements CvParamProvider {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "AssayParamSequence")
+  //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "AssayParamSequence")
   @Column(name = "param_pk")
   private Long id;
 

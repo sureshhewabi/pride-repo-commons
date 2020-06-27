@@ -14,17 +14,13 @@ import javax.validation.constraints.NotNull;
  * @version $Id$
  */
 @Entity
-@Table(name = "software_cvparam")
-@SequenceGenerator(
-  name = "SoftwareParamSequence",
-  sequenceName = "softwareParamSequence",
-  allocationSize = 100
-)
+@Table(name = "software_cvparam_2")
+//@SequenceGenerator(name = "SoftwareParamSequence", sequenceName = "softwareParamSequence", allocationSize = 100)
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope = SoftwareCvParam.class)
 public class SoftwareCvParam implements CvParamProvider {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SoftwareParamSequence")
+  //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SoftwareParamSequence")
   @Column(name = "param_pk")
   private Long id;
 

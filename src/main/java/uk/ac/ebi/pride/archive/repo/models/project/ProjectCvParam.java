@@ -15,21 +15,17 @@ import javax.validation.constraints.NotNull;
  *     <p>todo: should we expose cvparam
  */
 @Entity
-@Table(name = "project_cvparam")
+@Table(name = "project_cvparam_2")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "param_type", discriminatorType = DiscriminatorType.STRING, length = 32)
 @org.hibernate.annotations.DiscriminatorOptions(force = true)
-@SequenceGenerator(
-  name = "ProjectParamSequence",
-  sequenceName = "projectParamSequence",
-  allocationSize = 100
-)
+//@SequenceGenerator(name = "ProjectParamSequence", sequenceName = "projectParamSequence", allocationSize = 100)
 @JsonTypeInfo(use=JsonTypeInfo.Id.CLASS, include=JsonTypeInfo.As.PROPERTY, property="@class")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope=ProjectCvParam.class)
 public abstract class ProjectCvParam implements CvParamProvider {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ProjectParamSequence")
+  //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ProjectParamSequence")
   @Column(name = "param_pk")
   private Long id;
 

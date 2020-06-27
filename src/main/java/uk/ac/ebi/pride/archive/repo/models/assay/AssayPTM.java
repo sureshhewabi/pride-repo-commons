@@ -13,17 +13,13 @@ import javax.validation.constraints.NotNull;
  * @version $Id$
  */
 @Entity
-@Table(name = "assay_ptm")
-@SequenceGenerator(
-  name = "AssayPTMSequence",
-  sequenceName = "assayPtmSequence",
-  allocationSize = 100
-)
+@Table(name = "assay_ptm_2")
+//@SequenceGenerator(name = "AssayPTMSequence", sequenceName = "assayPtmSequence", allocationSize = 100)
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope= AssayPTM.class)
 public class AssayPTM implements CvParamProvider {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "AssayPTMSequence")
+  //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "AssayPTMSequence")
   @Column(name = "assay_ptm_pk")
   private Long id;
 

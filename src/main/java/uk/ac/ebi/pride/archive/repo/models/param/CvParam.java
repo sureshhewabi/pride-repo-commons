@@ -13,13 +13,13 @@ import javax.validation.constraints.NotNull;
  * @version $Id$
  */
 @Entity
-@Table(name = "cv_param", uniqueConstraints={@UniqueConstraint(columnNames = {"cv_label", "accession"})})
-@SequenceGenerator(name = "ParamSequence", sequenceName = "paramSequence", allocationSize = 100)
+@Table(name = "cv_param_2", uniqueConstraints={@UniqueConstraint(columnNames = {"cv_label", "accession"})})
+//@SequenceGenerator(name = "ParamSequence", sequenceName = "paramSequence", allocationSize = 100)
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope= CvParam.class)
 public class CvParam implements CvParamProvider {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ParamSequence")
+  //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ParamSequence")
   @Column(name = "cv_param_pk")
   private Long id;
 

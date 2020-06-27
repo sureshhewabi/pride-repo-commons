@@ -12,17 +12,12 @@ import javax.validation.constraints.NotNull;
  * @version $Id$
  */
 @Entity
-@Table(name = "reference")
-@SequenceGenerator(
-  name = "ReferenceSequence",
-  sequenceName = "referenceSequence",
-  allocationSize = 100
-)
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope = Reference.class)
+@Table(name = "reference_2")
+//@SequenceGenerator(name = "ReferenceSequence", sequenceName = "referenceSequence", allocationSize = 100) @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope = Reference.class)
 public class Reference implements ReferenceProvider {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ReferenceSequence")
+  //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ReferenceSequence")
   @Column(name = "reference_pk")
   private Long id;
 

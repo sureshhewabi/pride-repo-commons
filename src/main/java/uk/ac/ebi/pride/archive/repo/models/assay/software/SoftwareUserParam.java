@@ -12,17 +12,13 @@ import javax.validation.constraints.NotNull;
  * @version $Id$
  */
 @Entity
-@Table(name = "software_userparam")
-@SequenceGenerator(
-  name = "SoftwareParamSequence",
-  sequenceName = "softwareParamSequence",
-  allocationSize = 100
-)
+@Table(name = "software_userparam_2")
+//@SequenceGenerator(name = "SoftwareParamSequence", sequenceName = "softwareParamSequence", allocationSize = 100)
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope = SoftwareUserParam.class)
 public class SoftwareUserParam implements ParamProvider {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SoftwareParamSequence")
+  //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SoftwareParamSequence")
   @Column(name = "param_pk")
   private Long id;
 

@@ -21,13 +21,13 @@ import java.util.Set;
  * @version $Id$
  */
 @Entity
-@Table(name = "pride_users")
-@SequenceGenerator(name = "UserSequence", sequenceName = "prideUserSequence", allocationSize = 100)
+@Table(name = "pride_users_2")
+//@SequenceGenerator(name = "UserSequence", sequenceName = "prideUserSequence", allocationSize = 100)
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope = User.class)
 public class User implements UserProvider {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "UserSequence")
+  //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "UserSequence")
   @Column(name = "user_pk")
   private Long id;
 

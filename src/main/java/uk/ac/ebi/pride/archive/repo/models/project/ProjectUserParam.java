@@ -13,21 +13,17 @@ import javax.validation.constraints.NotNull;
  * @version $Id$
  */
 @Entity
-@Table(name = "project_userparam")
+@Table(name = "project_userparam_2")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "param_type", discriminatorType = DiscriminatorType.STRING, length = 32)
 @org.hibernate.annotations.DiscriminatorOptions(force = true)
-@SequenceGenerator(
-  name = "ProjectParamSequence",
-  sequenceName = "projectParamSequence",
-  allocationSize = 100
-)
+//@SequenceGenerator(name = "ProjectParamSequence", sequenceName = "projectParamSequence", allocationSize = 100)
 @JsonTypeInfo(use=JsonTypeInfo.Id.CLASS, include=JsonTypeInfo.As.PROPERTY, property="@class")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope = ProjectUserParam.class)
 public abstract class ProjectUserParam implements ParamProvider {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ProjectParamSequence")
+  //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ProjectParamSequence")
   @Column(name = "param_pk")
   private Long id;
 

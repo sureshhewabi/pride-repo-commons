@@ -12,17 +12,13 @@ import javax.validation.constraints.NotNull;
  * @version $Id$
  */
 @Entity
-@Table(name = "authorities")
-@SequenceGenerator(
-  name = "AuthoritySequence",
-  sequenceName = "authoritySequence",
-  allocationSize = 100
-)
+@Table(name = "authorities_2")
+//@SequenceGenerator(name = "AuthoritySequence", sequenceName = "authoritySequence", allocationSize = 100)
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope= Authority.class)
 public class Authority {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "AuthoritySequence")
+  //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "AuthoritySequence")
   @Column(name = "authority_pk")
   private Long id;
 
