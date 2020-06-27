@@ -12,5 +12,5 @@ import javax.persistence.Entity;
  */
 @Entity
 @DiscriminatorValue("SAMPLE")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope=ProjectSampleCvParam.class)
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope=ProjectSampleCvParam.class)
 public class ProjectSampleCvParam extends ProjectCvParam {}

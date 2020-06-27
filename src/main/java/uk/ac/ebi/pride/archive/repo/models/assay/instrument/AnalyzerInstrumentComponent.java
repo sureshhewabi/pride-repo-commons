@@ -2,6 +2,7 @@ package uk.ac.ebi.pride.archive.repo.models.assay.instrument;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.DiscriminatorValue;
@@ -14,7 +15,7 @@ import java.util.Collection;
  */
 @Entity
 @DiscriminatorValue("ANALYZER")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope= AnalyzerInstrumentComponent.class)
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope= AnalyzerInstrumentComponent.class)
 public class AnalyzerInstrumentComponent extends InstrumentComponent {
     @JsonIgnore
     @Override

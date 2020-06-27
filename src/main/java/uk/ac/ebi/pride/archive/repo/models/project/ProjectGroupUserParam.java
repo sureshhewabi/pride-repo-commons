@@ -12,5 +12,5 @@ import javax.persistence.Entity;
  */
 @Entity
 @DiscriminatorValue("PROJECT")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope=ProjectGroupUserParam.class)
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope=ProjectGroupUserParam.class)
 public class ProjectGroupUserParam extends ProjectUserParam {}

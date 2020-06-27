@@ -12,5 +12,5 @@ import javax.persistence.Entity;
  */
 @Entity
 @DiscriminatorValue("SOFTWARE")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope=ProjectSoftwareCvParam.class)
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope=ProjectSoftwareCvParam.class)
 public class ProjectSoftwareCvParam extends ProjectCvParam {}

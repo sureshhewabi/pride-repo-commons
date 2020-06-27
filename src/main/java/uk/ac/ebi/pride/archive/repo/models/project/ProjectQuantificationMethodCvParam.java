@@ -8,5 +8,5 @@ import javax.persistence.Entity;
 
 @Entity
 @DiscriminatorValue("QUANTIFICATION_METHOD")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope=ProjectQuantificationMethodCvParam.class)
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope=ProjectQuantificationMethodCvParam.class)
 public class ProjectQuantificationMethodCvParam extends ProjectCvParam {}
