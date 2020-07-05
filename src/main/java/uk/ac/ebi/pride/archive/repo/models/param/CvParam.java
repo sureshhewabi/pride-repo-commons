@@ -28,7 +28,7 @@ public class CvParam implements CvParamProvider {
   private String cvLabel;
 
   @NotNull
-  @Column(name = "accession")
+  @Column(name = "accession", unique = true)
   private String accession;
 
   @NotNull
