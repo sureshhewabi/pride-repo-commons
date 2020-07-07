@@ -24,6 +24,7 @@
         <data.provider.api.version>1.0.1-SNAPSHOT</data.provider.api.version>
         <hibernateValidator>6.1.5.Final</hibernateValidator>
         <apache.commons-lang3>3.10</apache.commons-lang3>
+        <lombokVersion>1.18.12</lombokVersion>
     </properties>
 
     <dependencies>
@@ -56,6 +57,13 @@
             <groupId>uk.ac.ebi.pride.archive</groupId>
             <artifactId>data-provider-api</artifactId>
             <version>${data.provider.api.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombokVersion}</version>
+            <scope>provided</scope>
         </dependency>
 
     </dependencies>
