@@ -7,13 +7,13 @@ import uk.ac.ebi.pride.archive.repo.models.project.Project;
 import java.util.List;
 import java.util.Map;
 
-public class Submission {
+public class SubmissionDto {
 
     private Project project;
     private List<Assay> assays;
     private Map<ProjectFile, String> projectFilesMap;
 
-    public Submission(Project project, List<Assay> assays, Map<ProjectFile, String> projectFilesMap) {
+    public SubmissionDto(Project project, List<Assay> assays, Map<ProjectFile, String> projectFilesMap) {
         this.project = project;
         this.assays = assays;
         this.projectFilesMap = projectFilesMap;
