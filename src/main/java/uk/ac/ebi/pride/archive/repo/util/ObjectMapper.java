@@ -4,6 +4,7 @@ import org.dozer.DozerBeanMapperSingletonWrapper;
 import org.dozer.Mapper;
 import uk.ac.ebi.pride.archive.dataprovider.param.CvParamProvider;
 import uk.ac.ebi.pride.archive.dataprovider.param.ParamProvider;
+import uk.ac.ebi.pride.archive.dataprovider.utils.RoleConstants;
 import uk.ac.ebi.pride.archive.dataprovider.utils.SubmissionTypeConstants;
 import uk.ac.ebi.pride.archive.repo.models.assay.Assay;
 import uk.ac.ebi.pride.archive.repo.models.assay.AssayCvParam;
@@ -29,10 +30,7 @@ import uk.ac.ebi.pride.archive.repo.models.project.ReferenceSummary;
 import uk.ac.ebi.pride.archive.repo.models.user.ContactSummary;
 import uk.ac.ebi.pride.archive.repo.models.user.UserSummary;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -219,7 +217,8 @@ public final class ObjectMapper {
     User result = new User();
     result.setId(userSummary.getId());
     result.setEmail(userSummary.getEmail());
-    result.setPassword(userSummary.getPassword());
+    String password = userSummary.getPassword();
+    result.setPassword(password!=null?password:"");
     result.setTitle(userSummary.getTitle());
     result.setFirstName(userSummary.getFirstName());
     result.setLastName(userSummary.getLastName());
@@ -235,6 +234,9 @@ public final class ObjectMapper {
                     ? (userSummary.getAcceptedTermsOfUse() ? 1 : 0)
                     : 0);
     result.setAcceptedTermsOfUseAt(userSummary.getAcceptedTermsOfUseAt());
+    Set<RoleConstants> authorities = new HashSet<>();
+    authorities.add(RoleConstants.SUBMITTER); // can only create submitter
+    result.setUserAuthorities(authorities);
     return result;
   }
 
