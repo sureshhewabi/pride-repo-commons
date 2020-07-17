@@ -68,14 +68,14 @@ public final class ObjectMapper {
     projectSummary.setDataProcessingProtocol(project.getDataProcessingProtocol());
 
     if(project.getOtherOmicsLink()!=null)
-      projectSummary.setOtherOmicsLink(project.getOtherOmicsLink().stream().collect(Collectors.joining(" ")));
+      projectSummary.setOtherOmicsLink(project.getOtherOmicsLinkOriginal());
     else
       projectSummary.setOtherOmicsLink(null);
 
     projectSummary.setSubmitter(mapUserToUserSummary(project.getSubmitter()));
     projectSummary.setUsers(mapUsersToUserSummaries(project.getUsers()));
 
-    projectSummary.setKeywords(project.getKeywords()==null?null:project.getKeywords().stream().collect(Collectors.joining(" ")));
+    projectSummary.setKeywords(project.getKeywordsOriginal());
 
     projectSummary.setNumAssays(project.getNumAssays());
     projectSummary.setReanalysis(project.getReanalysis());
