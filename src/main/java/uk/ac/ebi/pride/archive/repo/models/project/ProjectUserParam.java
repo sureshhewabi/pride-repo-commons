@@ -1,5 +1,6 @@
 package uk.ac.ebi.pride.archive.repo.models.project;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -31,7 +32,7 @@ public abstract class ProjectUserParam implements ParamProvider {
   @Column(name = "param_pk")
   private Long id;
 
-//  @JsonBackReference
+  @JsonBackReference
   @NotNull
   @ManyToOne
   @JoinColumn(name = "project_fk", nullable = false)

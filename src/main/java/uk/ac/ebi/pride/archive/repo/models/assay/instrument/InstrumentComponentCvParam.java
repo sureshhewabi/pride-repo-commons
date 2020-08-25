@@ -32,7 +32,7 @@ public class InstrumentComponentCvParam implements CvParamProvider {
   @NotNull
   @ManyToOne
   @JoinColumn(name = "instrument_component_fk", nullable = false)
-//  @JsonBackReference(value = "InstrumentComponentCvParam-instrumentComponent")
+  @JsonBackReference(value = "InstrumentComponentCvParam-instrumentComponent")
   private InstrumentComponent instrumentComponent;
 
   @NotNull
