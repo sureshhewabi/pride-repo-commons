@@ -1,6 +1,5 @@
 package uk.ac.ebi.pride.archive.repo.models.project;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -25,7 +24,7 @@ public class LabHead implements ContactProvider {
   @Column(name = "lab_head_pk")
   private Long id;
 
-  @JsonBackReference
+//  @JsonBackReference
   @ManyToOne
   @JoinColumn(name = "project_fk", nullable = false)
   private Project project;
