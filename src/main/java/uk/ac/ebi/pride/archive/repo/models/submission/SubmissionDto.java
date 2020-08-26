@@ -15,6 +15,9 @@ public class SubmissionDto {
     private Map<String, String> projectFilesAssayMap;
     private Set<ProjectFile> projectFiles;
 
+    public SubmissionDto() {
+    }
+
     public SubmissionDto(Project project, List<Assay> assays, Set<ProjectFile> projectFiles, Map<String, String> projectFilesAssayMap) {
         this.project = project;
         this.assays = assays;
