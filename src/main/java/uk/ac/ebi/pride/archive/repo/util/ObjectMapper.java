@@ -223,7 +223,6 @@ public final class ObjectMapper {
     result.setFirstName(userSummary.getFirstName());
     result.setLastName(userSummary.getLastName());
     result.setAffiliation(userSummary.getAffiliation());
-    result.setUserAuthorities(userSummary.getUserAuthorities());
     result.setCreateAt(userSummary.getCreateAt());
     result.setUpdateAt(userSummary.getUpdateAt());
     result.setCountry(userSummary.getCountry());
@@ -234,9 +233,12 @@ public final class ObjectMapper {
                     ? (userSummary.getAcceptedTermsOfUse() ? 1 : 0)
                     : 0);
     result.setAcceptedTermsOfUseAt(userSummary.getAcceptedTermsOfUseAt());
-    Set<RoleConstants> authorities = new HashSet<>();
-    authorities.add(RoleConstants.SUBMITTER); // can only create submitter
-    result.setUserAuthorities(authorities);
+    Set<RoleConstants> userAuthorities = userSummary.getUserAuthorities();
+    if(userAuthorities == null || userAuthorities.isEmpty()) {
+      userAuthorities = new HashSet<>();
+      userAuthorities.add(RoleConstants.SUBMITTER); // can only create submitter
+    }
+    result.setUserAuthorities(userAuthorities);
     return result;
   }
 
