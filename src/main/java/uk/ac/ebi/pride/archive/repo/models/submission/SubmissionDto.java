@@ -6,17 +6,20 @@ import uk.ac.ebi.pride.archive.repo.models.project.Project;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class SubmissionDto {
 
     private Project project;
     private List<Assay> assays;
-    private Map<ProjectFile, String> projectFilesMap;
+    private Map<String, String> projectFilesAssayMap;
+    private Set<ProjectFile> projectFiles;
 
-    public SubmissionDto(Project project, List<Assay> assays, Map<ProjectFile, String> projectFilesMap) {
+    public SubmissionDto(Project project, List<Assay> assays, Set<ProjectFile> projectFiles, Map<String, String> projectFilesAssayMap) {
         this.project = project;
         this.assays = assays;
-        this.projectFilesMap = projectFilesMap;
+        this.projectFiles = projectFiles;
+        this.projectFilesAssayMap = projectFilesAssayMap;
     }
 
     public Project getProject() {
@@ -35,11 +38,19 @@ public class SubmissionDto {
         this.assays = assays;
     }
 
-    public Map<ProjectFile, String> getProjectFilesMap() {
-        return projectFilesMap;
+    public Map<String, String> getProjectFilesAssayMap() {
+        return projectFilesAssayMap;
     }
 
-    public void setProjectFilesMap(Map<ProjectFile, String> projectFilesMap) {
-        this.projectFilesMap = projectFilesMap;
+    public Set<ProjectFile> getProjectFiles() {
+        return projectFiles;
+    }
+
+    public void setProjectFiles(Set<ProjectFile> projectFiles) {
+        this.projectFiles = projectFiles;
+    }
+
+    public void setProjectFilesAssayMap(Map<String, String> projectFilesAssayMap) {
+        this.projectFilesAssayMap = projectFilesAssayMap;
     }
 }
