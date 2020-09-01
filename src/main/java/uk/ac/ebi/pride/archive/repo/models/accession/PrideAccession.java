@@ -1,9 +1,7 @@
 package uk.ac.ebi.pride.archive.repo.models.accession;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "pride_accession")
@@ -12,6 +10,7 @@ public class PrideAccession {
     @Id
     private String entity;
 
+    @Column(name = "LAST_ID")
     private Long lastId;
 
     public PrideAccession() {
