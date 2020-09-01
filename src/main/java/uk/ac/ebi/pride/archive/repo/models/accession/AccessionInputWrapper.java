@@ -1,10 +1,10 @@
 package uk.ac.ebi.pride.archive.repo.models.accession;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Builder;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
+@Builder
 public class AccessionInputWrapper {
     private String type;
     private int count;
