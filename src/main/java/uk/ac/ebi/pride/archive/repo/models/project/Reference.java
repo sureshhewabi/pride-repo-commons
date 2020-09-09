@@ -13,7 +13,8 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = "reference_2")
-//@SequenceGenerator(name = "ReferenceSequence", sequenceName = "referenceSequence", allocationSize = 100) @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope = Reference.class)
+//@SequenceGenerator(name = "ReferenceSequence", sequenceName = "referenceSequence", allocationSize = 100)
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope = Reference.class)
 public class Reference implements ReferenceProvider {
 
   @Id
