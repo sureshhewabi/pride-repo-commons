@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.annotations.Type;
 import uk.ac.ebi.pride.archive.dataprovider.assay.AssayProvider;
 import uk.ac.ebi.pride.archive.dataprovider.assay.AssayType;
 import uk.ac.ebi.pride.archive.dataprovider.common.ITuple;
@@ -68,9 +69,11 @@ public class Assay implements AssayProvider {
 
     @NotNull
     @Column(name = "ms2_annotation")
+    @Type(type = "numeric_boolean")
     private boolean ms2Annotation;
 
     @NotNull
+    @Type(type = "numeric_boolean")
     private boolean chromatogram;
 
     @Column(name = "experimental_factor")

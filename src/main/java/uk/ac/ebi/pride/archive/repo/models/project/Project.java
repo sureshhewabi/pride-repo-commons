@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.*;
 import org.hibernate.annotations.FilterDef;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.annotations.Type;
 import uk.ac.ebi.pride.archive.dataprovider.data.peptide.PeptideSequenceProvider;
 import uk.ac.ebi.pride.archive.dataprovider.data.protein.ProteinIdentificationProvider;
 import uk.ac.ebi.pride.archive.dataprovider.param.ParamProvider;
@@ -93,6 +94,7 @@ public class Project implements ProjectProvider {
 
     @NotNull
     @Column(name = "is_public")
+    @Type(type = "numeric_boolean")
     private boolean publicProject;
 
     @Column(name = "other_omics_link")
@@ -161,6 +163,7 @@ public class Project implements ProjectProvider {
     private Collection<ProjectSoftwareCvParam> softwares;
 
     @NotNull
+    @Type(type = "numeric_boolean")
     private boolean changed;
 
     public Long getId() {
