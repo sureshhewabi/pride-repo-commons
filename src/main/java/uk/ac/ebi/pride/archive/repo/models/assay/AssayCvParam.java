@@ -38,7 +38,7 @@ public abstract class AssayCvParam implements CvParamProvider {
   private Assay assay;
 
   @NotNull
-  @ManyToOne(cascade = {CascadeType.MERGE})
+  @ManyToOne(/*cascade = {CascadeType.MERGE}*/)
   @JoinColumn(name = "cv_param_fk")
   private CvParam cvParam;
 
