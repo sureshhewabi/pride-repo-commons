@@ -40,7 +40,7 @@ public abstract class ProjectCvParam implements CvParamProvider {
   private Project project;
 
   @NotNull
-  @ManyToOne(cascade = {CascadeType.MERGE})
+  @ManyToOne(/*cascade = {CascadeType.MERGE}*/)
   @JoinColumn(name = "cv_param_fk")
   private CvParam cvParam;
 
