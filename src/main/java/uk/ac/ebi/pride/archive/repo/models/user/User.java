@@ -237,11 +237,11 @@ public class User implements UserProvider {
     }
   }
 
-  public Collection<Authority> getAuthorities() {
+  private Collection<Authority> getAuthorities() {
     return authorities;
   }
 
-  public void setAuthorities(Collection<Authority> authorities) {
+  private void setAuthorities(Collection<Authority> authorities) {
     this.authorities = authorities;
   }
 
