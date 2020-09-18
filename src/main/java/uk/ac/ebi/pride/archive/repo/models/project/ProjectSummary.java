@@ -47,7 +47,7 @@ public class ProjectSummary implements ProjectProvider {
   private String dataProcessingProtocol;
   private String otherOmicsLink;
   private UserSummary submitter;
-  private String keywords;
+  private String[] keywords;
   private int numAssays;
   private String reanalysis;
   private SubmissionTypeConstants submissionType;
@@ -58,6 +58,8 @@ public class ProjectSummary implements ProjectProvider {
   private Long id;
   private boolean changed;
   private Boolean highlighted;
+
+
 
   public ProjectSummary() {
     this.users = new ArrayList<>();
@@ -182,14 +184,14 @@ public class ProjectSummary implements ProjectProvider {
   public Set<String> getKeywords() {
     if(keywords!=null){
       Set<String> keywordsSet = new HashSet<String>();
-      keywordsSet.add(keywords);
+      Collections.addAll(keywordsSet,keywords);
       return keywordsSet;
     }else{
       return null;
     }
   }
 
-  public void setKeywords(String keywords) {
+  public void setKeywords(String[] keywords) {
     this.keywords = keywords;
   }
 
