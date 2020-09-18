@@ -75,7 +75,8 @@ public final class ObjectMapper {
     projectSummary.setSubmitter(mapUserToUserSummary(project.getSubmitter()));
     projectSummary.setUsers(mapUsersToUserSummaries(project.getUsers()));
 
-    projectSummary.setKeywords(project.getKeywordsOriginal());
+    String keywords = project.getKeywordsOriginal();
+    projectSummary.setKeywords(keywords==null?null:keywords.split(","));
 
     projectSummary.setNumAssays(project.getNumAssays());
     projectSummary.setReanalysis(project.getReanalysis());
