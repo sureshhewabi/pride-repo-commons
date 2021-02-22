@@ -24,11 +24,11 @@ import java.util.Date;
 @Table(name = "ticket")
 public class Ticket {
 
-    public enum State{
-        INITIAL,
-        VALIDATION,
-        SUBMISSION,
-        PUBLICATION
+    public enum State {
+        INCOMING,
+        VALIDATED,
+        SUBMITTED,
+        PUBLISHED
     }
 
     @Id
