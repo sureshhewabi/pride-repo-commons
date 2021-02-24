@@ -56,5 +56,4 @@ public class Ticket {
 
     @Column(name = "submitter_email")
     private String submitterEmail;
-
 }
