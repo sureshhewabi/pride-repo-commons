@@ -56,4 +56,17 @@ public class Ticket {
 
     @Column(name = "submitter_email")
     private String submitterEmail;
+
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "ticketId='" + ticketId + '\'' +
+                ", accession='" + accession + '\'' +
+                ", submittedFilesPath='" + submittedFilesPath + '\'' +
+                ", state=" + state +
+                ", createdDate=" + createdDate +
+                ", lastModifiedDate=" + lastModifiedDate +
+                ", submitterEmail='" + submitterEmail + '\'' +
+                '}';
+    }
 }
