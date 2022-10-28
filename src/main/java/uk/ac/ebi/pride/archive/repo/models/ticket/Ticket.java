@@ -25,6 +25,7 @@ import java.util.Date;
 public class Ticket {
 
     public enum State {
+        PENDING,
         INCOMING,
         VALIDATED,
         SUBMITTED,
