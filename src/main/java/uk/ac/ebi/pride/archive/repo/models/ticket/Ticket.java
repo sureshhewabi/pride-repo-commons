@@ -29,7 +29,9 @@ public class Ticket {
         INCOMING,
         VALIDATED,
         SUBMITTED,
-        PUBLISHED
+        PUBLISHED,
+        VALIDATION_FAILED,
+        USER_CONTACTED
     }
 
     @Id
