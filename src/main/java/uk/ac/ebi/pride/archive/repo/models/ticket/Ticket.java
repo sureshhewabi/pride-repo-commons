@@ -31,7 +31,7 @@ public class Ticket {
         SUBMITTED,
         PUBLISHED,
         VALIDATION_FAILED,
-        USER_CONTACTED
+        CONTACTED_USER
     }
 
     @Id
