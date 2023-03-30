@@ -33,7 +33,8 @@ public class Ticket {
         VALIDATION_FAILED,
         CONTACTED_USER,
         OBSOLETE,
-        RESOLVED
+        RESOLVED,
+        INVALID
     }
 
     @Id
