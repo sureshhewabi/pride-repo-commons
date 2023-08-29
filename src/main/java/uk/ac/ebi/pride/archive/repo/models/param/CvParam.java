@@ -2,6 +2,7 @@ package uk.ac.ebi.pride.archive.repo.models.param;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import uk.ac.ebi.pride.archive.dataprovider.param.CvParamProvider;
 
@@ -15,6 +16,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "cv_param", uniqueConstraints={@UniqueConstraint(columnNames = {"cv_label", "accession"})})
 @SequenceGenerator(name = "ParamSequence", sequenceName = "paramSequence", allocationSize = 100)
+@JsonTypeInfo(use=JsonTypeInfo.Id.CLASS, property="@class")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope= CvParam.class)
 public class CvParam implements CvParamProvider {
 
