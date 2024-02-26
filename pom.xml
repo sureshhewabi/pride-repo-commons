@@ -24,7 +24,7 @@
         <data.provider.api.version>1.0.7-SNAPSHOT</data.provider.api.version>
         <hibernateValidator>6.1.5.Final</hibernateValidator>
         <apache.commons-lang3>3.10</apache.commons-lang3>
-        <lombokVersion>1.18.12</lombokVersion>
+        <lombokVersion>1.18.30</lombokVersion>
     </properties>
 
     <dependencies>
