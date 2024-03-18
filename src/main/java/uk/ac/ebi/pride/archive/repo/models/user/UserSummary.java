@@ -1,22 +1,18 @@
 package uk.ac.ebi.pride.archive.repo.models.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import uk.ac.ebi.pride.archive.dataprovider.user.UserProvider;
-import uk.ac.ebi.pride.archive.dataprovider.utils.RoleConstants;
 import uk.ac.ebi.pride.archive.dataprovider.utils.TitleConstants;
 import uk.ac.ebi.pride.archive.repo.util.CollectionUtils;
+import uk.ac.ebi.pride.archive.repo.util.AuthorityConstants;
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * @author Rui Wang
- * @version $Id$
- */
-public class UserSummary implements UserProvider {
 
-  private final Set<RoleConstants> userAuthorities = new HashSet<>();
+public class UserSummary {
+
+  private final Set<AuthorityConstants> userAuthorities = new HashSet<>();
   private Long id;
   private String email;
 
@@ -83,7 +79,6 @@ public class UserSummary implements UserProvider {
     return title;
   }
 
-  @Override
   public String getName() {
     return null;
   }
@@ -116,11 +111,11 @@ public class UserSummary implements UserProvider {
     this.affiliation = affiliation;
   }
 
-  public Set<RoleConstants> getUserAuthorities() {
+  public Set<AuthorityConstants> getUserAuthorities() {
     return userAuthorities;
   }
 
-  public void setUserAuthorities(Set<RoleConstants> userAuthorities) {
+  public void setUserAuthorities(Set<AuthorityConstants> userAuthorities) {
     CollectionUtils.replaceValuesInCollection(userAuthorities, this.userAuthorities);
   }
 

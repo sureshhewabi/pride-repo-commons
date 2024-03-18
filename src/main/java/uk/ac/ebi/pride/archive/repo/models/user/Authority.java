@@ -2,7 +2,7 @@ package uk.ac.ebi.pride.archive.repo.models.user;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import uk.ac.ebi.pride.archive.dataprovider.utils.RoleConstants;
+import uk.ac.ebi.pride.archive.repo.util.AuthorityConstants;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -44,7 +44,7 @@ public class Authority implements Serializable {
 
   @NotNull
   @Enumerated(EnumType.STRING)
-  private RoleConstants authority;
+  private AuthorityConstants authority;
 
   public Long getId() {
     return id;
@@ -62,11 +62,11 @@ public class Authority implements Serializable {
     this.user = user;
   }
 
-  public RoleConstants getAuthority() {
+  public AuthorityConstants getAuthority() {
     return authority;
   }
 
-  public void setAuthority(RoleConstants authority) {
+  public void setAuthority(AuthorityConstants authority) {
     this.authority = authority;
   }
 

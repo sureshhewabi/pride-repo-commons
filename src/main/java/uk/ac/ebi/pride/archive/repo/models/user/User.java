@@ -3,11 +3,10 @@ package uk.ac.ebi.pride.archive.repo.models.user;
 import com.fasterxml.jackson.annotation.*;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
-import uk.ac.ebi.pride.archive.dataprovider.user.UserProvider;
-import uk.ac.ebi.pride.archive.dataprovider.utils.RoleConstants;
 import uk.ac.ebi.pride.archive.dataprovider.utils.TitleConstants;
 import uk.ac.ebi.pride.archive.repo.models.project.Project;
 import uk.ac.ebi.pride.archive.repo.util.PasswordUtilities;
+import uk.ac.ebi.pride.archive.repo.util.AuthorityConstants;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -16,15 +15,11 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * @author Jose A. Dianes
- * @version $Id$
- */
 @Entity
 @Table(name = "pride_users")
 @SequenceGenerator(name = "UserSequence", sequenceName = "prideUserSequence", allocationSize = 100)
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope = User.class)
-public class User implements UserProvider {
+public class User {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "UserSequence")
@@ -113,7 +108,6 @@ public class User implements UserProvider {
     return title;
   }
 
-  @Override
   public String getName() {
     return firstName+" "+lastName;
   }
@@ -214,10 +208,9 @@ public class User implements UserProvider {
     this.projects = projects;
   }
 
-  @Override
   @JsonIgnore
-  public Set<RoleConstants> getUserAuthorities() {
-    Set<RoleConstants> userAuthorities = new HashSet<>();
+  public Set<AuthorityConstants> getUserAuthorities() {
+    Set<AuthorityConstants> userAuthorities = new HashSet<>();
     if (authorities != null) {
       for (Authority authority : authorities) {
         userAuthorities.add(authority.getAuthority());
@@ -227,9 +220,9 @@ public class User implements UserProvider {
   }
 
   @JsonIgnore
-  public void setUserAuthorities(Set<RoleConstants> userAuthorities) {
+  public void setUserAuthorities(Set<AuthorityConstants> userAuthorities) {
     this.authorities = new HashSet<>();
-    for (RoleConstants userAuthority : userAuthorities) {
+    for (AuthorityConstants userAuthority : userAuthorities) {
       Authority authority = new Authority();
       authority.setAuthority(userAuthority);
       authority.setUser(this);
