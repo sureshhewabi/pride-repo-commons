@@ -10,6 +10,7 @@ import uk.ac.ebi.pride.archive.repo.util.AuthorityConstants;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
@@ -19,7 +20,7 @@ import java.util.Set;
 @Table(name = "pride_users")
 @SequenceGenerator(name = "UserSequence", sequenceName = "prideUserSequence", allocationSize = 100)
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope = User.class)
-public class User {
+public class User implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "UserSequence")

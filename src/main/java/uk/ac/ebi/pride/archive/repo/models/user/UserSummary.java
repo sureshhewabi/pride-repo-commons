@@ -5,12 +5,13 @@ import uk.ac.ebi.pride.archive.dataprovider.utils.TitleConstants;
 import uk.ac.ebi.pride.archive.repo.util.CollectionUtils;
 import uk.ac.ebi.pride.archive.repo.util.AuthorityConstants;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 
-public class UserSummary {
+public class UserSummary implements Serializable {
 
   private final Set<AuthorityConstants> userAuthorities = new HashSet<>();
   private Long id;
