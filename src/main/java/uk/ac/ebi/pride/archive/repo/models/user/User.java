@@ -209,7 +209,6 @@ public class User implements Serializable {
     this.projects = projects;
   }
 
-  @JsonIgnore
   public Set<AuthorityConstants> getUserAuthorities() {
     Set<AuthorityConstants> userAuthorities = new HashSet<>();
     if (authorities != null) {
