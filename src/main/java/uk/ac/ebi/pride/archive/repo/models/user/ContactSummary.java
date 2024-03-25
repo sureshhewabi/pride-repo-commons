@@ -3,6 +3,9 @@ package uk.ac.ebi.pride.archive.repo.models.user;
 import uk.ac.ebi.pride.archive.dataprovider.user.ContactProvider;
 import uk.ac.ebi.pride.archive.dataprovider.utils.TitleConstants;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+
 /**
  * @author Rui Wang
  * @version $Id$
@@ -10,9 +13,12 @@ import uk.ac.ebi.pride.archive.dataprovider.utils.TitleConstants;
 public class ContactSummary implements ContactProvider {
 
   private TitleConstants title;
+  @NotBlank
   private String firstName;
   private String lastName;
   private String affiliation;
+  @NotBlank
+  @Email
   private String email;
   private Long id;
 

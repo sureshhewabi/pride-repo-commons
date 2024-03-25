@@ -5,6 +5,8 @@ import uk.ac.ebi.pride.archive.dataprovider.utils.TitleConstants;
 import uk.ac.ebi.pride.archive.repo.util.CollectionUtils;
 import uk.ac.ebi.pride.archive.repo.util.AuthorityConstants;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
@@ -15,12 +17,15 @@ public class UserSummary implements Serializable {
 
   private final Set<AuthorityConstants> userAuthorities = new HashSet<>();
   private Long id;
+  @NotBlank
+  @Email
   private String email;
 
   @JsonIgnore
+  @NotBlank
   private String password;
-
   private TitleConstants title;
+  @NotBlank
   private String firstName;
   private String lastName;
   private String affiliation;
