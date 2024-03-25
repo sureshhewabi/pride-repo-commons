@@ -15,7 +15,6 @@ import uk.ac.ebi.pride.archive.repo.models.assay.software.Software;
 import uk.ac.ebi.pride.archive.repo.models.file.ProjectFile;
 import uk.ac.ebi.pride.archive.repo.models.project.*;
 import uk.ac.ebi.pride.archive.repo.models.user.User;
-import uk.ac.ebi.pride.archive.repo.models.user.UserAAP;
 import uk.ac.ebi.pride.archive.repo.models.assay.AssaySummary;
 import uk.ac.ebi.pride.archive.repo.models.assay.instrument.InstrumentComponentSummary;
 import uk.ac.ebi.pride.archive.repo.models.assay.instrument.InstrumentSummary;
@@ -148,16 +147,6 @@ public final class ObjectMapper {
             user.getAcceptedTermsOfUse() != null && (user.getAcceptedTermsOfUse() == 1));
     result.setAcceptedTermsOfUseAt(user.getAcceptedTermsOfUseAt());
     return result;
-  }
-
-  public static UserAAP mapUsertoUserAAP(User user){
-      UserAAP userAAP = new UserAAP();
-      userAAP.setEmail(user.getEmail());
-      userAAP.setUsername(user.getEmail());//email is the username for pride hence using same for AAP
-      userAAP.setPassword(user.getPassword());
-      userAAP.setName(user.getFirstName()+" "+user.getLastName());
-      userAAP.setOrganization(user.getAffiliation().substring(0, user.getAffiliation().length()<=255?user.getAffiliation().length():255));//AAP limits org size to 255bytes
-      return userAAP;
   }
 
   public static AssaySummary mapAssayToAssaySummary(Assay assay) {
