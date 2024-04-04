@@ -1,6 +1,7 @@
 package uk.ac.ebi.pride.archive.repo.models.tokens;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
@@ -8,11 +9,8 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import uk.ac.ebi.pride.archive.repo.util.PasswordUtilities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
@@ -20,21 +18,26 @@ import java.util.Date;
 @Getter
 @Setter
 @Table(name = "user_token")
-public class UserToken {
+public class UserToken implements Serializable {
 
     public enum Type {
-        PASSWORD_RESET
+        PASSWORD_RESET,
+        REVIEWER_ACCESS
     }
 
     @Id
     @Column(name = "token_id")
     private String tokenId;
 
-    @Column(name = "user_email")
-    private String userEmail;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "type")
+    private Type type;
 
-    @Column(name = "pin")
-    private String pin;
+    @Column(name = "identifier")
+    private String identifier; //email for password_reset, PXD accession for reviewer
+
+    @Column(name = "token")
+    private String token;
 
     @CreatedDate
     @Column(name = "created_date")
@@ -47,21 +50,21 @@ public class UserToken {
     @Column(name = "expiry_date")
     private Date expiryDate;
 
-    @JsonProperty("pin")
-    public void setPinOriginal(String pin) {
-        this.pin = pin;
+    @JsonProperty("token")
+    public void setTokenOriginal(String token) {
+        this.token = token;
     }
 
-    public void SetPin(String pin) {
-        this.pin = PasswordUtilities.encode(pin);
+    public void setToken(String token) {
+        this.token = PasswordUtilities.encode(token);
     }
 
     @Override
     public String toString() {
         return "UserToken{" +
                 "tokenId='" + tokenId + '\'' +
-                ", userEmail='" + userEmail + '\'' +
-                ", pin='" + pin + '\'' +
+                ", identifier='" + identifier + '\'' +
+                ", token='" + token + '\'' +
                 ", createdDate=" + createdDate +
                 ", lastModifiedDate=" + lastModifiedDate +
                 ", expiryDate=" + expiryDate +

@@ -9,11 +9,11 @@ import javax.validation.constraints.NotBlank;
 public class ResetPassword {
     @NotBlank
     @Email
-    private String username;
+    private String email;
     @NotBlank
     private String password;
     @NotBlank
     private String reference;
     @NotBlank
-    private String pin;
+    private String token;
 }
