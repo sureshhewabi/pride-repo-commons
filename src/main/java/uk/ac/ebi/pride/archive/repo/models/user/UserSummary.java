@@ -22,7 +22,6 @@ public class UserSummary implements Serializable {
   private String email;
 
   @JsonIgnore
-  @NotBlank
   private String password;
   private TitleConstants title;
   @NotBlank
