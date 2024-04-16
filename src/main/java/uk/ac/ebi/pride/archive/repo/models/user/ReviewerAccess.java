@@ -5,7 +5,7 @@ import lombok.Data;
 import javax.validation.constraints.NotBlank;
 
 @Data
-public class ReviewerAcccess {
+public class ReviewerAccess {
     @NotBlank
     private String accession;
     @NotBlank
