@@ -22,7 +22,7 @@ public final class PasswordUtilities {
   private static final PasswordEncoder encoder = new BCryptPasswordEncoder();
 
   /** default password length */
-  private static final int PASSWORD_LENGTH = 8;
+  private static final int PASSWORD_LENGTH = 12;
 
   private PasswordUtilities() {}
 
@@ -35,7 +35,7 @@ public final class PasswordUtilities {
   }
 
   public static String generatePassword() {
-    return RandomStringUtils.random(PASSWORD_LENGTH, true, true);
+    return RandomStringUtils.randomAlphanumeric(PASSWORD_LENGTH);
   }
 
   public static String generateEncodedPassword() {
