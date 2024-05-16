@@ -34,7 +34,7 @@ import java.util.*;
  * @author Rui Wang
  * @version $Id$
  */
-public final class ObjectMapper {
+public final class ObjectTransformer {
   public static final Mapper mapper = DozerBeanMapperSingletonWrapper.getInstance();
 
   public static ProjectSummary mapProjectToProjectSummary(Project project) {
