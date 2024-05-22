@@ -12,10 +12,4 @@ public class Credentials {
     private String username;
     @NotBlank
     private String password;
-    private CredentialsType type;
-
-    public enum CredentialsType {
-        USER_PASSWORD,
-        REVIEWER_TOKEN
-    }
 }
